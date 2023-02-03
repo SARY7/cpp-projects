@@ -2,8 +2,10 @@
 .vscode/tasks.json
 hello_world.exe
 hello_world
+hello_world
 a.exe
 .vscode/settings.json
 quadratic.exe
 planet.exe
 leapyear.exe
+initials.exe
