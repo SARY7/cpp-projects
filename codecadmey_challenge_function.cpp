@@ -47,6 +47,25 @@ std::string needs_water(int days, bool is_succulent)
         return "Dont  water the plant!\n";
     }
 }
+
+bool is_palindrome(std::string text)
+{
+    std::string reverse;
+    for (int i = text.size() - 1; i >= 0; i--) // Dont forget minus 1
+    {
+        reverse.push_back(text[i]);
+    }
+    std::cout << reverse << "\n";
+    if (reverse == text)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 int main()
 {
     introduction("John", "Doe");
@@ -67,4 +86,8 @@ int main()
     }
 
     std::cout << needs_water(10, false) << "\n";
+
+    std::cout << is_palindrome("madam") << "\n";
+    std::cout << is_palindrome("ada") << "\n";
+    std::cout << is_palindrome("lovelace") << "\n";
 }
