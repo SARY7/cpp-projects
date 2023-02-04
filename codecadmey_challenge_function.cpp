@@ -28,6 +28,25 @@ std::vector<int> first_three_multiples(int num)
     return multiple;
 }
 
+std::string needs_water(int days, bool is_succulent)
+{
+    if (is_succulent && days <= 12)
+    {
+        return "Dont water the plant!\n";
+    }
+    else if (!is_succulent && days >= 3)
+    {
+        return "Time to water the plant.\n";
+    }
+    else if (is_succulent && days >= 13)
+    {
+        return "Go ahead and give the plant a little water.\n";
+    }
+    else
+    {
+        return "Dont  water the plant!\n";
+    }
+}
 int main()
 {
     introduction("John", "Doe");
@@ -46,4 +65,6 @@ int main()
     {
         std::cout << first_three_multiples(8)[i] << "\n";
     }
+
+    std::cout << needs_water(10, false) << "\n";
 }
