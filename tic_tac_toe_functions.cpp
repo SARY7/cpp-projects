@@ -10,6 +10,13 @@ void initializer(std::string player1, std::string player2, std::vector<vector<in
     string player1, player2;
     std::cout << "\n Welcome to the Tic-Tac-Toe game! Have fun.\n\n";
     std::cout << "Enter the name of the first player: ";
+    /*
+    The C++ getline() is an in-built function defined in the <string.h>
+    header file that allows accepting and reading single and multiple
+    line strings from the input stream. In C++, the cin object also allows
+     input from the user, but not multi-word or multi-line input.
+     That’s where the getline() function comes in handy.
+    */
     getline(cin, player1);
     std::cout << "\n Enter the name of the second player: ";
     getline(cin, player2);
