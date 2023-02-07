@@ -1,5 +1,5 @@
 #include <iostream>
-#include "codecademy_ufo_function.hpp"
+#include "codecademy_ufo.hpp"
 
 int main()
 {
