@@ -11,9 +11,9 @@ first we should make the structure of the game.
 using namespace std;
 
 // Defining global variables
-std::vector<std::vector<char>> grid = {{'1', '2', '3'},
-                                       {'4', '5', '6'},
-                                       {'7', '8', '9'}};
+std::vector<char> grid = {'1', '2', '3',
+                          '4', '5', '6',
+                          '7', '8', '9'};
 
 char token = 'X'; // X is for initialization of token, it can be both X or O
 int row, column;

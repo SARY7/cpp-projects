@@ -5,7 +5,7 @@ using namespace std;
 
 // making a 2-dimensional array: rows and column numbers of the game table
 //---------------------------------------------------------------------------------------------
-void initializer(std::string player1, std::string player2, std::vector<vector<char>> grid)
+void initializer(std::string player1, std::string player2, std::vector<char> grid)
 // std::vector<vector<data_type>> refers to a 2d-array
 {
     std::cout << "\n Welcome to the Tic-Tac-Toe game! Have fun.\n\n";
@@ -25,18 +25,18 @@ void initializer(std::string player1, std::string player2, std::vector<vector<ch
     // priting the grid to the output
     cout << " ________ _________ ________\n";
     cout << "|        |         |        |\n";
-    cout << "|    " << grid[0][0] << "   |    " << grid[0][1] << "    |   " << grid[0][2] << "    | \n";
+    cout << "|    " << grid[1] << "   |    " << grid[2] << "    |   " << grid[3] << "    | \n";
     cout << "|________|_________|________|\n";
     cout << "|        |         |        |\n";
-    cout << "|    " << grid[1][0] << "   |    " << grid[1][1] << "    |   " << grid[1][2] << "    | \n";
+    cout << "|    " << grid[4] << "   |    " << grid[5] << "    |   " << grid[6] << "    | \n";
     cout << "|________|_________|________|\n";
     cout << "|        |         |        |\n";
-    cout << "|    " << grid[2][0] << "   |    " << grid[2][1] << "    |   " << grid[2][2] << "    | \n";
+    cout << "|    " << grid[7] << "   |    " << grid[8] << "    |   " << grid[9] << "    | \n";
     cout << "|________|_________|________|\n";
 }
 //---------------------------------------------------------------------------------------------
 void play(char token, std::string player1, std::string player2, int row, int column,
-          std::vector<vector<char>> grid)
+          std::vector<char> grid)
 {
     int digit; // its a local variable
     if (token == 'X')
@@ -49,83 +49,21 @@ void play(char token, std::string player1, std::string player2, int row, int col
     {
         cout << player2 << " now is your turn.";
         cin >> digit;
+
+        if (digit < 1 || digit > 9)
+        {
+            cout << "This is an invalid choice." << endl;
+        }
     }
 
-    // for (int i = 1; i < 10, i++)
-    // {
-    //     if (digit == 1){
-    //         row = i-1 ;
-    //         column = i-1 ;
-    //     }
-    // }
-
-    if (digit == 1)
+    if (token == 'X' && grid[digit] != 'X' && grid[digit] != 'O')
     {
-        row = 0;
-        column = 0;
-    }
-
-    if (digit == 2)
-    {
-        row = 0;
-        column = 1;
-    }
-
-    if (digit == 3)
-    {
-        row = 0;
-        column = 2;
-    }
-
-    if (digit == 4)
-    {
-        row = 1;
-        column = 0;
-    }
-
-    if (digit == 5)
-    {
-        row = 1;
-        column = 1;
-    }
-
-    if (digit == 6)
-    {
-        row = 1;
-        column = 2;
-    }
-
-    if (digit == 7)
-    {
-        row = 2;
-        column = 0;
-    }
-
-    if (digit == 8)
-    {
-        row = 2;
-        column = 1;
-    }
-
-    if (digit == 9)
-    {
-        row = 2;
-        column = 2;
-    }
-
-    else if (digit < 1 || digit > 9)
-    {
-        cout << "This is an invalid choice." << endl;
-    }
-
-    if (token == 'X' && grid[row][column] != 'X' && grid[row][column] != 'O')
-    {
-        grid[row][column] = 'X';
+        grid[digit] = 'X';
         token = 'O';
     }
-    else if (token == 'O' && grid[row][column] != 'X' && token == 'X' && grid[row][column] != 'O')
+    else if (token == 'O' && grid[digit] != 'X' && token == 'X' && grid[digit] != 'O')
     {
-        grid[row][column] = 'O';
+        grid[digit] = 'O';
         token = 'X';
     }
     else
@@ -134,30 +72,40 @@ void play(char token, std::string player1, std::string player2, int row, int col
     }
 }
 //---------------------------------------------------------------------------------------------
-bool rules(std::vector<vector<char>> grid, bool tie)
+bool rules(std::vector<char> grid, bool tie)
 {
-    for (int i = 0; i < 3; i++)
+    // for (int i = 1; i < 3; i++)
+    // {
+    // check the grid horizontally
+    if (grid[1] == grid[2] && grid[1] == grid[3] ||
+        grid[4] == grid[5] && grid[4] == grid[6] ||
+        grid[7] == grid[8] && grid[7] == grid[9])
     {
-        if (grid[i][0] == grid[i][1] && grid[i][0] == grid[i][2] ||
-            grid[0][i] == grid[1][i] && grid[0][i] == grid[2][i]) // check vertical and horizontally
+        return true; // if this condition is true, the player wins
+    }
+    // }
 
-        {
-            return true; // if this condition is true, the player wins
-        }
+    // check the grid vertically
+    if (grid[1] == grid[4] && grid[1] == grid[7] ||
+        grid[2] == grid[5] && grid[2] == grid[8] ||
+        grid[3] == grid[6] && grid[3] == grid[9])
+    {
+        return true; // if this condition is true, the player wins
     }
 
-    if (grid[0][0] == grid[1][1] && grid[0][0] == grid[2][2] ||
-        grid[0][2] == grid[1][1] && grid[0][2] == grid[2][0]) // check vertical and horizontally
+    // check the diagonally
+    if (grid[1] == grid[5] && grid[1] == grid[9] ||
+        grid[3] == grid[5] && grid[3] == grid[7]) // check vertical and horizontally
 
     {
         return true; // if this condition is true, the player wins
     }
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 9; i++)
     {
-        for (int j = 0; j < 3; j++)
+        // for (int j = 0; j < 3; j++)
         {
-            if (grid[i][j] != 'X' && grid[i][j] != 'O')
+            if (grid[i] != 'X' && grid[i] != 'O')
             {
                 return false; // it mean tha the game  should still goes on
             }
