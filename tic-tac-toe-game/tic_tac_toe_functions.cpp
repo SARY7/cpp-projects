@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <string>
+// #include <string>
 using namespace std;
 
 // making a 2-dimensional array: rows and column numbers of the game table
@@ -8,7 +8,7 @@ using namespace std;
 void initializer(std::string player1, std::string player2, std::vector<char> grid)
 // std::vector<vector<data_type>> refers to a 2d-array
 {
-    std::cout << "\n Welcome to the Tic-Tac-Toe game! Have fun.\n\n";
+    std::cout << "\nWelcome to the Tic-Tac-Toe game! Have fun.\n";
     std::cout << "Enter the name of the first player: ";
     /*
     The C++ getline() is an in-built function defined in the <string.h>
@@ -18,20 +18,20 @@ void initializer(std::string player1, std::string player2, std::vector<char> gri
      That’s where the getline() function comes in handy.
     */
     getline(cin, player1);
-    std::cout << "\n Enter the name of the second player: ";
+    std::cout << "\nEnter the name of the second player: ";
     getline(cin, player2);
-    cout << "The game will start with " << player1 << "\n";
+    cout << "\nThe game will start with " << player1 << "\n";
 
     // priting the grid to the output
-    cout << " ________ _________ ________\n";
+    cout << " ________ _________ ________ \n";
     cout << "|        |         |        |\n";
-    cout << "|    " << grid[1] << "   |    " << grid[2] << "    |   " << grid[3] << "    | \n";
+    cout << "|    " << grid[0] << "   |    " << grid[1] << "    |   " << grid[2] << "    | \n";
     cout << "|________|_________|________|\n";
     cout << "|        |         |        |\n";
-    cout << "|    " << grid[4] << "   |    " << grid[5] << "    |   " << grid[6] << "    | \n";
+    cout << "|    " << grid[3] << "   |    " << grid[4] << "    |   " << grid[5] << "    | \n";
     cout << "|________|_________|________|\n";
     cout << "|        |         |        |\n";
-    cout << "|    " << grid[7] << "   |    " << grid[8] << "    |   " << grid[9] << "    | \n";
+    cout << "|    " << grid[6] << "   |    " << grid[7] << "    |   " << grid[8] << "    | \n";
     cout << "|________|_________|________|\n";
 }
 //---------------------------------------------------------------------------------------------

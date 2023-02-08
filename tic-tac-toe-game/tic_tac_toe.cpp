@@ -7,7 +7,7 @@ first we should make the structure of the game.
 #include <iostream>
 #include "tic_tac_toe_header.hpp"
 #include <vector>
-#include <string>
+// #include <string>
 using namespace std;
 
 // Defining global variables
