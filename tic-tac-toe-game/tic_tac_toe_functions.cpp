@@ -3,8 +3,38 @@
 #include <vector>
 using namespace std;
 
+// Defining global variables----------------------------------------------------------------------------------------
+std::vector<char> grid = {'1', '2', '3',
+                          '4', '5', '6',
+                          '7', '8', '9'};
+
+char token = 'X'; // X is for initialization of token, it can be both X or O
+int row, column;
+string player1, player2 = ""; // initialization of strings
+bool tie = false;
+int digit; // its a local variable
+void get_input()
+{
+
+    //--------------------------------------------------------------------------------------------------------------
+    std::cout << "\nWelcome to the Tic-Tac-Toe game! Have fun.\n";
+    std::cout << "Enter the name of the first player: ";
+    /*
+    The C++ getline() is an in-built function defined in the <string.h>
+    header file that allows accepting and reading single and multiple
+    line strings from the input stream. In C++, the cin object also allows
+     input from the user, but not multi-word or multi-line input.
+     That’s where the getline() function comes in handy.
+    */
+    getline(cin, player1);
+    std::cout << "\nEnter the name of the second player: ";
+    getline(cin, player2);
+    cout << "\nThe game will start with " << player1 << "\n";
+}
+//--------------------------------------------------------------------------------------------------------------
+
 // making a 2-dimensional array: rows and column numbers of the game table-----------------------------------------
-void initializer(std::vector<char> grid)
+void initializer()
 {
     // priting the grid to the output------------------------------------------------------------------------------
     cout << " ________ _________ ________ \n";
@@ -20,7 +50,7 @@ void initializer(std::vector<char> grid)
 }
 
 // creating game dynamics------------------------------------------------------------------------------------------
-void play(char token, std::string player1, std::string player2, std::vector<char> grid)
+void play()
 {
     int digit; // its a local variable
     if (token == 'X')
@@ -59,11 +89,11 @@ void play(char token, std::string player1, std::string player2, std::vector<char
         cout << "No empty space is left on the grid.";
         // play(token, player1, player2, grid);
     }
-    initializer(grid);
+    initializer();
 }
 
 // making a rule table for the game------------------------------------------------------------------------------------
-bool rules(std::vector<char> grid, bool tie)
+bool rules()
 {
     // check the grid horizontally
     if (grid[0] == grid[1] && grid[0] == grid[2] ||
